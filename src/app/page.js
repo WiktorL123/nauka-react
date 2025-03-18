@@ -6,8 +6,17 @@ export default function Home() {
  const [users, setUsers] = useState([]);
  const [loading, setLoading] = useState(true);
  const [error, setError] = useState(null);
+ const [selected, setSelected] = useState('all');
 
- useEffect(() => {
+ const uniqueNames = [...new Set(users.map((user) => user.username))];
+
+
+    const handleChangeOption = (value) =>{
+        setSelected(value);
+        console.log(value)
+    }
+
+    useEffect(() => {
    const fetchUsers = async () => {
      try {
        const response = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -30,10 +39,11 @@ export default function Home() {
     if (error) return <p className={'text-red-700'}>{error.message}</p>;
     if (loading) return <p>Loading...</p>;
     return (
+
         <div className={'flex justify-center flex-col items-center'}>
             <h1 className={'font-bold my-4 text-center bg-green-600'}>Lista użytkowników</h1>
-            <UsersFilter users={users} />
-            <UsersList users={users} />
+            <UsersFilter uniqueNames={uniqueNames} handleChangeOption={handleChangeOption} />
+            <UsersList users={users} selected={selected}/>
         </div>
 
 

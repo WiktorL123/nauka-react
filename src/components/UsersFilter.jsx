@@ -1,14 +1,23 @@
- export default function UsersFilter({users}) {
 
-    const uniqueNames = [...new Set(users.map((user) => user.username))];
+export default function UsersFilter({uniqueNames, handleChangeOption}) {
+
+
 
     return (
         <>
             <div>
-                <select>
+                <select onChange={(e)=>handleChangeOption(e.target.value)}>
                     <option value={'all'}>Wszyscy</option>
                     {uniqueNames.map((name, index) =>(
-                        <option key={index} value={name}>{name}</option>
+                        <option
+                            key={index}
+                            value={name}
+
+                        >
+
+                            {name}
+
+                        </option>
                     ))}
                 </select>
             </div>
