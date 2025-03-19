@@ -2,17 +2,24 @@
 import {useEffect, useState} from "react";
 import UsersList from "@/components/UsersList";
 import UsersFilter from "@/components/UsersFilter";
+import UsersSearch from "@/components/UsersSearch";
 export default function Home() {
  const [users, setUsers] = useState([]);
  const [loading, setLoading] = useState(true);
  const [error, setError] = useState(null);
  const [selected, setSelected] = useState('all');
+ const [searchValue, setSearchValue] = useState('');
 
  const uniqueNames = [...new Set(users.map((user) => user.username))];
 
 
     const handleChangeOption = (value) =>{
         setSelected(value);
+        console.log(value)
+    }
+
+    const handleSearchName = (value) => {
+        setSearchValue(value);
         console.log(value)
     }
 
@@ -43,7 +50,8 @@ export default function Home() {
         <div className={'flex justify-center flex-col items-center'}>
             <h1 className={'font-bold my-4 text-center bg-green-600'}>Lista użytkowników</h1>
             <UsersFilter uniqueNames={uniqueNames} handleChangeOption={handleChangeOption} />
-            <UsersList users={users} selected={selected}/>
+            <UsersSearch searchValue={searchValue} handleSearchName={handleSearchName} />
+            <UsersList users={users} selected={selected} searchValue={searchValue} />
         </div>
 
 
