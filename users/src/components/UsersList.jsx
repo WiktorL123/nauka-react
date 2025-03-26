@@ -41,16 +41,13 @@ export default function UsersList({users, selected, searchValue }){
     return (
         <>
 
-
-
-
             <div className={'flex justify-center flex-row items-center flex-wrap '}>
                 {finalFilteredUsers.map((user) => (
                     <div className={'w-40 mx-4 px-2 border my-4 rounded-2xl flex flex-col'} key={user.id}>
                         <h2 className={'text-center my-2 font-bold break-words'}>{user.name}</h2>
                         <p className={'text-center break-words'}>{user.username}</p>
                         <p className={'text-center break-words'}>{user.email}</p>
-                        <p className={'text-center break-words'}>{user.address.street}</p>
+                        <p className={'text-center break-words'}>{user.address.street || 'ulica'}</p>
                         {(isToggledDown[user.id]) && (
                             <p>{user.phone}</p>
 
