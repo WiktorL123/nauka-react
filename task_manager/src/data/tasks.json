@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Kup mleko",
+    "description": "Z Carrefour po drodze do domu",
+    "isDone": false
+  },
+  {
+    "id": 2,
+    "title": "Praca domowa z Reacta",
+    "description": "Stworzyć context i podzielić komponenty",
+    "isDone": true
+  },
+  {
+    "id": 3,
+    "title": "Zadzwonić do lekarza",
+    "description": "Umówić się na kontrolę",
+    "isDone": false
+  },
+  {
+    "id": 4,
+    "title": "Ćwiczenia fizyczne",
+    "description": "30 minut cardio",
+    "isDone": true
+  }
+]
