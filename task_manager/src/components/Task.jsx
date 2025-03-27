@@ -3,7 +3,7 @@ import {useTasks} from "@/context/TaskContext";
 
 export default function Task({ task }) {
 
-    const {deleteTask} = useTasks()
+    const {deleteTask, toggleDone} = useTasks()
 
     return (
         <div className="my-4 w-1/2 flex justify-between items-start rounded-xl py-4 px-6 shadow-lg bg-gradient-to-r from-gray-800 to-purple-800 text-white hover:scale-105 transition-all duration-300 hover:cursor-pointer">
@@ -19,6 +19,7 @@ export default function Task({ task }) {
                     <span className="font-bold mx-2 text-white">Status:</span>
                     {task.isDone ? 'ukończone' : 'nie ukończone'}
                 </p>
+                <button onClick={() => toggleDone(task.id)} className={'bg-amber-300'}>{task.isDone  ? 'Oznacz jako nieukończone' : 'Oznacz jako ukończone'}</button>
             </div>
 
             <div className="flex flex-col items-end gap-4 text-xl ml-4">

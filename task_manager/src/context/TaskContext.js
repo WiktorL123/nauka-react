@@ -6,6 +6,17 @@ const TaskContext = createContext(null)
 
 export default function TaskProvider({children}) {
     const [tasks, setTasks] = useState(data);
+    const [activeFilter, setActiveFilter] = useState('all');
+
+    const possibleFilters = ['all', 'done', 'undone']
+
+    const toggleDone = (id) => {
+        setTasks(prev =>
+            prev.map(task =>
+                task.id === id ? { ...task, isDone: !task.isDone } : task
+            )
+        );
+    };
 
     const addNewTask = (values)=>{
         const newTask = {
@@ -26,6 +37,8 @@ export default function TaskProvider({children}) {
         <TaskContext.Provider value={{
             addNewTask,
             deleteTask,
+            toggleDone,
+            possibleFilters,
             tasks
         }}>
             {children}
